@@ -84,7 +84,7 @@ RUN mkdir -p /tmp/bitnami/pkg/cache/ && cd /tmp/bitnami/pkg/cache/ && \
     tar -zxf discourse-2.8.9-0-linux-${OS_ARCH}-debian-11.tar.gz -C /opt/bitnami --strip-components=2 --no-same-owner --wildcards '*/files' && \
     rm -rf discourse-2.8.9-0-linux-${OS_ARCH}-debian-11.tar.gz discourse-2.8.9-0-linux-${OS_ARCH}-debian-11.tar.gz.sha256
 RUN apt-get autoremove --purge -y curl && \
-    apt-get update && apt-get upgrade -y && \
+    apt-get update && apt-get upgrade -y && apt-get install sudo runit -y && \
     apt-get clean && rm -rf /var/lib/apt/lists /var/cache/apt/archives
 RUN chmod g+rwX /opt/bitnami
 RUN /opt/bitnami/ruby/bin/gem install --force bundler -v '< 2'
