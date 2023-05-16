@@ -272,6 +272,11 @@ discourse_create_conf_file() {
         ! is_empty_value "$DISCOURSE_SMTP_OPEN_TIMEOUT" && discourse_conf_set "smtp_open_timeout" "$DISCOURSE_SMTP_OPEN_TIMEOUT"
         ! is_empty_value "$DISCOURSE_SMTP_READ_TIMEOUT" && discourse_conf_set "smtp_read_timeout" "$DISCOURSE_SMTP_READ_TIMEOUT"
     fi
+
+    if ! is_empty_value "$DISCOURSE_SERVE_STATIC_ASSETS"; then
+        discourse_conf_set "serve_static_assets" "$DISCOURSE_SERVE_STATIC_ASSETS"
+    fi
+
     # Extra configuration
     ! is_empty_value "$DISCOURSE_EXTRA_CONF_CONTENT" && echo "$DISCOURSE_EXTRA_CONF_CONTENT" >> "$DISCOURSE_CONF_FILE"
 }
