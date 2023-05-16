@@ -43,7 +43,7 @@ RUN mkdir -p /tmp/bitnami/pkg/cache/ ; cd /tmp/bitnami/pkg/cache/ ; \
       rm -rf "${COMPONENT}".tar.gz{,.sha256} ; \
     done
 RUN apt-get autoremove --purge -y curl && \
-    apt-get update && apt-get upgrade -y && \
+    apt-get update && apt-get upgrade -y &&  apt-get install sudo runit -y && \
     apt-get clean && rm -rf /var/lib/apt/lists /var/cache/apt/archives
 RUN /opt/bitnami/ruby/bin/gem install --force bundler -v '< 2'
 
